@@ -1,0 +1,42 @@
+1) To implement a async annotation the method has to be under a class whose bean is managed by spring. That means
+it can't be static also
+
+
+2) ThreadPoolTaskExecutor is a class in the Spring Framework that provides a way to manage a
+pool of threads for executing tasks asynchronously. It allows for flexible configuration of thread pool parameters,
+such as core and maximum pool sizes, and queue capacity. This executor is particularly useful for handling concurrent tasks
+in a Spring application.
+
+
+3)Core Pool Size:
+
+  Defines the minimum number of threads that can run concurrently.
+  New threads are created to handle tasks until this number is reached, even if other threads are idle.
+
+  Maximum Pool Size:
+  Sets the upper limit on the number of threads that can be created.
+  Once this limit is reached, no new tasks will be accepted until some threads are freed.
+
+  Queue Capacity:
+  Determines the number of tasks that can be queued when all core threads are busy.
+  If the queue is full and the maximum pool size is reached, new tasks will be rejected based on the configured rejection policy.
+
+  Keep Alive Seconds:
+  Specifies the time that excess idle threads will wait for new tasks before terminating.
+  This setting helps manage resource utilization effectively.
+
+  Task Decorator:
+  Allows for wrapping tasks with additional behavior, such as monitoring or context setup.
+  Useful for adding execution context around task invocations.
+
+  Rejection Policies:
+  Defines how to handle tasks that cannot be executed due to the pool being full.
+
+  Common policies include:
+  AbortPolicy: Throws an exception when a task cannot be accepted.
+
+  CallerRunsPolicy: Executes the task in the calling thread, effectively increasing the queue capacity.
+
+  DiscardPolicy: Silently discards the task.
+
+  DiscardOldestPolicy: Discards the oldest unhandled request in the queue.
